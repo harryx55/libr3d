@@ -42,15 +42,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>bin-out\Debug\Debug-windows-x86\Render3D\</OutDir>
-    <IntDir>bin-int\Debug\Debug-windows-x86\Render3D\</IntDir>
+    <OutDir>Output\bin-out\Debug\Debug-windows-x86\Render3D\</OutDir>
+    <IntDir>Output\bin-int\Debug\Debug-windows-x86\Render3D\</IntDir>
     <TargetName>Render3D</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>bin-out\Debug\Release-windows-x86\Render3D\</OutDir>
-    <IntDir>bin-int\Debug\Release-windows-x86\Render3D\</IntDir>
+    <OutDir>Output\bin-out\Debug\Debug-windows-x86\Render3D\</OutDir>
+    <IntDir>Output\bin-int\Debug\Debug-windows-x86\Render3D\</IntDir>
     <TargetName>Render3D</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
@@ -59,8 +59,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>R3D_WINDOWS;R3D_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;src;ThirdParty\glfw\include;ThirdParty\glad\include;ThirdParty\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>R3D_WINDOWS;R3D_DEBUG;_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;src;ThirdParty\glfw\include;ThirdParty\glad\include;ThirdParty\spdlog\include;ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -80,7 +80,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>R3D_WINDOWS;R3D_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;src;ThirdParty\glfw\include;ThirdParty\glad\include;ThirdParty\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;src;ThirdParty\glfw\include;ThirdParty\glad\include;ThirdParty\spdlog\include;ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -100,12 +100,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="OpenGL\OpenGLMesh.h" />
+    <ClInclude Include="OpenGL\OpenGLShaders.h" />
+    <ClInclude Include="OpenGL\OpenGLTextures.h" />
+    <ClInclude Include="src\R3DAssert.h" />
+    <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\Log.h" />
     <ClInclude Include="src\MainApp.h" />
     <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="OpenGL\OpenGLMesh.cpp" />
+    <ClCompile Include="OpenGL\OpenGLShaders.cpp" />
+    <ClCompile Include="OpenGL\OpenGLTextures.cpp" />
+    <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="ThirdParty\glad\src\glad.c">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
@@ -114,6 +123,10 @@
     <ClCompile Include="src\MainApp.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\stb_image\stb_image.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

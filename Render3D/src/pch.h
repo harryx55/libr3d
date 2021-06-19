@@ -8,4 +8,7 @@
 
 #include <glad/glad.h>
 
+#include <sstream>
+#include <fstream>
+
 #include "Log.h"

@@ -27,6 +27,8 @@ pchsource "Render3D/src/pch.cpp"
 		"%{prj.name}/Application.h",
 		"%{prj.name}/Application.cpp",
 
+		"%{prj.name}/ThirdParty/stb_image/**.cpp",
+		"%{prj.name}/ThirdParty/stb_image/**.h",
 		"%{prj.name}/ThirdParty/glad/src/**.c"
 	}
 
@@ -42,7 +44,8 @@ pchsource "Render3D/src/pch.cpp"
 		"%{prj.name}/src",
 		"%{prj.name}/ThirdParty/glfw/include",
 		"%{prj.name}/ThirdParty/glad/include",
-		"%{prj.name}/ThirdParty/spdlog/include"
+		"%{prj.name}/ThirdParty/spdlog/include",
+		"%{prj.name}/ThirdParty/stb_image"
 	}
 
 	libdirs
@@ -61,6 +64,13 @@ pchsource "Render3D/src/pch.cpp"
 		{
 			"NoPCH"
 		}
+
+	filter "files:Render3D/ThirdParty/stb_image/**.cpp"
+		flags
+		{
+			"NoPCH"
+		}
+
 
 	filter "system:windows"
 		cppdialect "c++17"

@@ -25,6 +25,13 @@
     <ClInclude Include="src\pch.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Input.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\OpenGLTextures.h" />
+    <ClInclude Include="OpenGL\OpenGLShaders.h" />
+    <ClInclude Include="src\R3DAssert.h" />
+    <ClInclude Include="OpenGL\OpenGLMesh.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -43,6 +50,11 @@
     <ClCompile Include="src\pch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Input.cpp" />
+    <ClCompile Include="OpenGL\OpenGLShaders.cpp" />
+    <ClCompile Include="OpenGL\OpenGLTextures.cpp" />
+    <ClCompile Include="OpenGL\OpenGLMesh.cpp" />
+    <ClCompile Include="ThirdParty\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

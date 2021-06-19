@@ -12,6 +12,10 @@ namespace R3D
 		static void onClose();
 		
 	private:
+		static void window_resize_callback(GLFWwindow*, int, int);
+		static void mouse_cursor_callback(GLFWwindow*);
+
+	private:
 		static GLFWwindow* window;
 	};
 	

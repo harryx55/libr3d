@@ -7,7 +7,6 @@ namespace R3D
 	std::shared_ptr<spdlog::logger> Log::Logger;
 	void Log::Init()
 	{
-		//		(>*~*)>
 		std::vector<spdlog::sink_ptr> log;
 		log.emplace_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
 		log.emplace_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>("Render 3D", true));

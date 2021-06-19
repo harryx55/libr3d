@@ -17,6 +17,7 @@ namespace R3D
 
 		if (VSYNC)
 			glfwSwapInterval(1);
+		glfwSetFramebufferSizeCallback(window, MainApp::window_resize_callback);
 
 		Application::Init();
 	}
@@ -40,5 +41,10 @@ namespace R3D
 		glfwTerminate();
 
 		Application::Close();
+	}
+
+	void MainApp::window_resize_callback(GLFWwindow* window, int width, int height)
+	{
+		glViewport(0, 0, width, height);
 	}
 }
