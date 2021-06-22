@@ -30,6 +30,8 @@ pchsource "Render3D/src/pch.cpp"
 		"%{prj.name}/ThirdParty/stb_image/**.cpp",
 		"%{prj.name}/ThirdParty/stb_image/**.h",
 		"%{prj.name}/ThirdParty/glad/src/**.c"
+
+		"%{prj.name}/ThirdParty/glm/detail/**.cpp"
 	}
 
 	buildoptions
@@ -66,6 +68,12 @@ pchsource "Render3D/src/pch.cpp"
 		}
 
 	filter "files:Render3D/ThirdParty/stb_image/**.cpp"
+		flags
+		{
+			"NoPCH"
+		}
+
+	filter "files:Render3D/ThirdParty/glm/detail/**.cpp"
 		flags
 		{
 			"NoPCH"
