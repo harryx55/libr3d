@@ -14,8 +14,11 @@ public:
 	Texture2D();
 	~Texture2D();
 
-	void Generate(const char*, int, int);
+	void Generate(const char*, int width = 320, int height = 240);
 	void setActiveTexture(int);
 	void bind() const;
 	void unbind() const;
+
+private:
+	bool fileExists(const char*);
 };

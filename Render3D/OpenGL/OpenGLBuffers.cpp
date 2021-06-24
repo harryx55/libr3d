@@ -5,6 +5,14 @@
 
 namespace R3D
 {
+	unsigned int VertexArray::m_offset;
+
+	VertexBuffer::VertexBuffer()
+		: m_vertexBuffer(0), m_count(0), m_size(0)
+	{
+
+	}
+
 	void VertexBuffer::AttachBuffer(void* data, int size, int count)
 	{
 		m_size = size;
@@ -30,13 +38,19 @@ namespace R3D
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
+	IndexBuffer::IndexBuffer()
+		: m_indexBuffer(0), m_size(0)
+	{
+
+	}
+
 	void IndexBuffer::AttachBuffer(void* data, int size)
 	{
 		m_size = size;
 
 		glGenBuffers(1, &m_indexBuffer);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexBuffer);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, size * sizeof(float), data, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, size * sizeof(unsigned int), data, GL_STATIC_DRAW);
 	}
 
 	void IndexBuffer::DeleteBuffer() const
@@ -54,16 +68,26 @@ namespace R3D
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 
+	VertexArray::VertexArray()
+		: m_vertexArray(0)
+	{
+
+	}
+
 	void VertexArray::CreateVertexArray()
 	{
 		glGenVertexArrays(1, &m_vertexArray);
 		glBindVertexArray(m_vertexArray);
 	}
 
-	void VertexArray::AddBuffer(VertexBuffer* buffer, unsigned int index)
+	void VertexArray::AddBuffer(unsigned int index, size_t size, unsigned int stride)
 	{
+		if (index == GL_MAX_VERTEX_ATTRIBS)
+			R3D_WARN("BUFFERS| Vertex attribute array index Error");
+
 		glEnableVertexAttribArray(index);
-		glVertexAttribPointer(index, buffer->GetCount(), GL_FLOAT, GL_FALSE, 0, (void*)0);
+		glVertexAttribPointer(index, size, GL_FLOAT, GL_FALSE, stride * sizeof(float), (void*)(m_offset * sizeof(float)));
+		m_offset =+ size;
 	}
 
 	void VertexArray::DeleteVertexArray() const

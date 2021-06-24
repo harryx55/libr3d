@@ -19,9 +19,6 @@
     <ClInclude Include="src\Log.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\MainApp.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\pch.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -323,13 +320,7 @@
     <ClCompile Include="ThirdParty\glad\src\glad.c">
       <Filter>ThirdParty\glad\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Entrypoint.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\Log.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\MainApp.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp">
@@ -342,6 +333,7 @@
     <ClCompile Include="ThirdParty\stb_image\stb_image.cpp" />
     <ClCompile Include="OpenGL\OpenGLBuffers.cpp" />
     <ClCompile Include="ThirdParty\glm\detail\glm.cpp" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -482,5 +474,7 @@
     <None Include="ThirdParty\glm\gtx\vector_angle.inl" />
     <None Include="ThirdParty\glm\gtx\vector_query.inl" />
     <None Include="ThirdParty\glm\gtx\wrap.inl" />
+    <None Include="OpenGL\shaders\vertex.glsl" />
+    <None Include="OpenGL\shaders\fragment.glsl" />
   </ItemGroup>
 </Project>

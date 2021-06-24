@@ -13,6 +13,8 @@ namespace R3D
 		unsigned int m_count;
 
 	public:
+		VertexBuffer();
+
 		void AttachBuffer(void* data, int size, int);
 		void Bind() const;
 		void Unbind() const;
@@ -30,6 +32,8 @@ namespace R3D
 		unsigned int m_size;
 
 	public:
+		IndexBuffer();
+
 		void AttachBuffer(void*, int);
 		void Bind() const;
 		void Unbind() const;
@@ -43,10 +47,13 @@ namespace R3D
 	{
 	private:
 		unsigned int m_vertexArray;
+		static unsigned int m_offset;
 
 	public:
+		VertexArray();
+
 		void CreateVertexArray();
-		void AddBuffer(VertexBuffer*, unsigned int);
+		void AddBuffer(unsigned int, size_t, unsigned int);
 		void DeleteVertexArray() const;
 		void Bind() const;
 		void Unbind() const;

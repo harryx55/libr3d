@@ -107,7 +107,6 @@
     <ClInclude Include="src\R3DAssert.h" />
     <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\Log.h" />
-    <ClInclude Include="src\MainApp.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="ThirdParty\glm\common.hpp" />
     <ClInclude Include="ThirdParty\glm\detail\compute_common.hpp" />
@@ -401,12 +400,11 @@
     <ClCompile Include="OpenGL\OpenGLShaders.cpp" />
     <ClCompile Include="OpenGL\OpenGLTextures.cpp" />
     <ClCompile Include="src\Input.cpp" />
+    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="ThirdParty\glad\src\glad.c">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Entrypoint.cpp" />
     <ClCompile Include="src\Log.cpp" />
-    <ClCompile Include="src\MainApp.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -421,6 +419,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include="OpenGL\shaders\fragment.glsl" />
+    <None Include="OpenGL\shaders\vertex.glsl" />
     <None Include="ThirdParty\glm\detail\func_common.inl" />
     <None Include="ThirdParty\glm\detail\func_common_simd.inl" />
     <None Include="ThirdParty\glm\detail\func_exponential.inl" />

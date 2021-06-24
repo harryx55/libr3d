@@ -10,11 +10,12 @@ public:
 	void bind() const;
 	void unbind() const;
   
+	void SetTexture(const char*, int i = 0);
 private:
 	unsigned int m_shaderProgram;
 	unsigned int m_vertexShader;
 	unsigned int m_fragmentShader;
 
-	int GetUniformLocation(const char*);
+	int GetUniformLocation(const std::string&);
 	const char* ReadFile(const char*);
 };

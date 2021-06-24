@@ -1,19 +1,29 @@
 #pragma once
 
-
-#define  SCREEN_WIDTH		1280
-#define  SCREEN_HEIGHT		1280
-#define  WINDOW_TITLE		"Window"
-#define  VSYNC				true
+#include "OpenGL/OpenGLBuffers.h"
+#include "OpenGL/OpenGLShaders.h"
+#include "OpenGL/OpenGLTextures.h"
 
 namespace R3D
 {
+	enum class RENDERER
+	{
+		OPENGL   = 0,
+		DIRECT3D = 1
+	};
+
+
 	class Application
 	{
 	public:
-		static void Init();
-		static void Prepare();
-		static void Update();
-		static void Close();
+		Application(RENDERER renderer, bool, int WIDTH = 1280, int HEIGHT = 720);
+
+		static void window_resize_callback(GLFWwindow*, int, int);
+		void OnUpdate();
+		void onShutDown();
+		bool WindowIsOpen();
+
+	private:
+		GLFWwindow* window;
 	};
 }

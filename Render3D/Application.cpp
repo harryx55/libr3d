@@ -1,47 +1,43 @@
 #include "pch.h"
 #include "Application.h"
 
-#include "OpenGL/OpenGLBuffers.h"
 
 namespace R3D
 {
-	// Runs on startup
-	void Application::Init()
+	Application::Application(RENDERER render, bool VSync, int WIDTH, int HEIGHT)
 	{
-		Log::Init();
-		R3D_INFO("Initialized...!");
-
-		// initialize opengl
-		gladLoadGL();
-	}
-
-	// Runs before render
-	void Application::Prepare()
-	{
-		R3D_WARN("Preparing render...");
-		float vertices[] =
+		if (!glfwInit())
 		{
-			-0.5f, -0.5f,
-			 0.0f,  0.5f,
-			 0.5f, -0.5f
-		};
+			R3D_ERROR("GLFW| glfw initialization error");
+		}
 
-		VertexArray vao;
-		vao.CreateVertexArray();
+		window = glfwCreateWindow(WIDTH, HEIGHT, "Window", NULL, NULL);
+		glfwMakeContextCurrent(window);
 
-		VertexBuffer* vbo = new VertexBuffer;
-		vbo->AttachBuffer(vertices, 6, 2);
-		vao.AddBuffer(vbo, 0);
+		if (VSync)
+			glfwSwapInterval(1);
+		glfwSetFramebufferSizeCallback(window, Application::window_resize_callback);
 	}
 
-	// Runs every frame, rendering is done here
-	void Application::Update()
+	void Application::window_resize_callback(GLFWwindow* window, int width, int height)
 	{
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glViewport(0, 0, width, height);
 	}
 
-	// Run after rendering is done
-	void Application::Close()
+	void Application::OnUpdate()
 	{
+		glfwPollEvents();
+		glfwSwapBuffers(window);
+	}
+
+	bool Application::WindowIsOpen()
+	{
+		return !glfwWindowShouldClose(window);
+	}
+
+	void Application::onShutDown()
+	{
+		glfwDestroyWindow(window);
+		glfwTerminate();
 	}
 }

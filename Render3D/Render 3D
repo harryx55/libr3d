@@ -1,2 +1,4 @@
-[19:57:47] [info] Render 3D: Initialized...!
-[19:57:47] [warning] Render 3D: Preparing render...
+[18:26:59] [info] Render 3D: Application Initialized!
+[18:26:59] [info] Render 3D: Preparing render...
+[18:26:59] [info] Render 3D: C:/Solutions/Render3D/Render3D/OpenGL/shaders/vertex.glsl
+[18:26:59] [info] Render 3D: C:/Solutions/Render3D/Render3D/OpenGL/shaders/fragment.glsl
