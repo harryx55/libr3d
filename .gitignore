@@ -1,8 +1,16 @@
-#directories
-.vs/
-bin/
-Output/
-
 
 #files
 *.user
+*.exe
+*.obj
+*.ilk
+*.pdb
+*.ilk
+
+
+#directories
+
+Debug/
+Release/
+x64/
+
