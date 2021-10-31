@@ -1,8 +1,17 @@
 #include "GLFW_input.h"
 
+using namespace rnd;
 bool Input::IsKeyPressedImpl(int keyCode){
 	int state = glfwGetKey(Window::m_window, keyCode);
 	return state == GLFW_PRESS || state == GLFW_RELEASE;
+}
+
+bool Input::IsKeyPressed(int keyCode) {
+	return glfwGetKey(Window::m_window, keyCode) == GLFW_PRESS;
+}
+
+bool Input::IsKeyReleased(int keyCode) {
+	return glfwGetKey(Window::m_window, keyCode) == GLFW_RELEASE;
 }
 
 bool Input::IsMouseButtonPressedImpl(int button) {
@@ -24,4 +33,8 @@ float Input::GetMousePosXImpl()
 float Input::GetMousePosYImpl()
 {
 	return GetMousePosImpl().y;
+}
+
+const char* Input::GetKeyName(int key) {
+	return glfwGetKeyName(key, 0);
 }

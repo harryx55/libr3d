@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+using namespace rnd;
 Application::Application() {
 	window = new Window(1280, 720, "libr3d");
 	if(!gladLoadGL()) {
@@ -18,19 +19,19 @@ Application::Application() {
 
 	vertexArray->CreateVertexArray();
 	float vertices[] =
-	{
-		-0.5f, -0.5f,
-		-0.5f,  0.5f,
-		 0.5f,  0.5f,
-		 0.5f, -0.5f
-	};
+	  {
+	    -0.5f, -0.5f,
+	    -0.5f,  0.5f,
+	    0.5f,  0.5f,
+	    0.5f, -0.5f
+	  };
 	
 	vertexBuffer->CreateBuffer(vertices, 8);
 
-        uint32_t indices[] =
-	{
-		0, 1, 2, 2, 3, 0
-	};
+	uint32_t indices[] =
+	  {
+	    0, 1, 2, 2, 3, 0
+	  };
 	indexBuffer->CreateBuffer(indices, 6);
 	vertexArray->AttachAttributes(0, 2, 2, 0);
 
@@ -45,15 +46,15 @@ Application::Application() {
 	          gl_Position = vec4(aPos, 1.0);
 	  })";
 
-	  const char* fragmentSrc =
-	    R"(#version 140
+	const char* fragmentSrc =
+	  R"(#version 140
 	  out vec4 fragColor;	  
 	  void main()
 	  {
 	  fragColor = vec4(0.4, 0.4, 0.4, 1.0);
 	  })";
 
-	  shader->LoadShaders(vertexSrc, fragmentSrc);
+	shader->LoadShaders(vertexSrc, fragmentSrc);
 }
 
 bool Application::Running() {
@@ -67,7 +68,13 @@ void Application::Update() {
 	vertexArray->BindVertexArray();
 	shader->BindShader();
 
-	printf("%f\n", input->GetMousePosYImpl());
+	if(input->IsKeyPressed(GLFW_KEY_A)) {
+		printf("%s%f\n", "Mouse position Y : ", input->GetMousePosYImpl());
+	}
+	
+	if(input->IsKeyPressed(GLFW_KEY_W)) {
+		  printf("%s\n", input->GetKeyName(GLFW_KEY_W));
+	}
 	glDrawElements(GL_TRIANGLES, indexBuffer->count, GL_UNSIGNED_INT, nullptr);
 	window->Update();
 }
@@ -78,4 +85,16 @@ Application::~Application() {
 	free(indexBuffer);
 
 	delete window;
+}
+
+void Application::setVSync(bool set) {
+	window->setVSync(set);
+}
+
+void Application::setFullscreen(bool set) {
+	window->setFullscreen(set);
+}
+
+void Application::setResizable(bool set) {
+	window->setResizable(set);
 }

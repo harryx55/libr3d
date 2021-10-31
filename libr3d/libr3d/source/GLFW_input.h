@@ -1,13 +1,21 @@
 #pragma once
 #include "GLFW_window.h"
 
-struct Input {
-  bool IsKeyPressedImpl(int keyCode);
-  bool IsMouseButtonPressedImpl(int button);
+namespace rnd {
+    struct Input {
+      bool IsKeyPressedImpl(int keyCode);
+      bool IsMouseButtonPressedImpl(int button);
 
-  float GetMousePosXImpl();
-  float GetMousePosYImpl();
+      bool IsKeyPressed(int keyCode);
+      bool IsKeyReleased(int keyCode);
+  
+      float GetMousePosXImpl();
+      float GetMousePosYImpl();
 
-  struct MousePos { float x, y; };
-  MousePos GetMousePosImpl();
-};
+      const char* GetKeyName(int key);
+      
+      struct MousePos { float x, y; };
+      MousePos GetMousePosImpl();
+
+    };
+}

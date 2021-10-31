@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-struct SandboxApp : public Application
+struct SandboxApp : public rnd::Application
 {
   void Setup(){
 	  printf("Hello World! \n");
@@ -17,6 +17,8 @@ int main()
 {
 	SandboxApp *app = new SandboxApp();
 	app->Setup();
+	app->setVSync(true);
+	app->setResizable(false);
 	
 	while(app->Running()) {
 		app->Update();
