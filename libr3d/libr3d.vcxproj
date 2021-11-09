@@ -157,6 +157,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="libr3d\source\Application.cpp" />
+    <ClCompile Include="libr3d\source\core\log.cpp" />
     <ClCompile Include="libr3d\source\GLFW_Input.cpp" />
     <ClCompile Include="libr3d\source\GLFW_window.cpp" />
     <ClCompile Include="libr3d\source\pch.cpp">

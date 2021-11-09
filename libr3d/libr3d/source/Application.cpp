@@ -4,6 +4,7 @@
 
 using namespace rnd;
 Application::Application() {
+	print("Info", "%s\n", "Hello World!");
 	window = new Window(1280, 720, "libr3d");
 	if(!gladLoadGL()) {
 		printf("failed not initialize glad \n"); __debugbreak();

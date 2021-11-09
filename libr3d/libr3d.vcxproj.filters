@@ -36,6 +36,9 @@
     <ClCompile Include="libr3d\source\pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="libr3d\source\core\log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libr3d\source\Application.h">
