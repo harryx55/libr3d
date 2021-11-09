@@ -5,7 +5,7 @@
 using namespace rnd;
 Application::Application() {
 	print("Info", "%s\n", "Hello World!");
-	window = new Window(1280, 720, "libr3d");
+	window = new Window(900, 600, "libr3d");
 	if(!gladLoadGL()) {
 		printf("failed not initialize glad \n"); __debugbreak();
 	}
@@ -101,4 +101,16 @@ void Application::setWindowed(bool set) {
 
 void Application::setResizable(bool set) {
 	window->setResizable(set);
+}
+
+void Application::setWindowMaxLimits(uint32_t x, uint32_t y) {
+	window->setWindowMaxlimits(x, y);
+}
+
+void Application::setWindowMinLimits(uint32_t x, uint32_t y) {
+	window->setWindowMinlimits(x, y);
+}
+
+void Application::setWindowPosition(uint32_t x, uint32_t y) {
+	window->setWindowPosition(x, y);
 }

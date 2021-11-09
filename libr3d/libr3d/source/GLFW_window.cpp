@@ -61,3 +61,17 @@ void Window::closeWindow() {
 	glfwDestroyWindow(m_window);
 	glfwTerminate();
 }
+
+void Window::setWindowMaxlimits(uint32_t x, uint32_t y) {
+	// TODO: first check if window is in windowed mode
+	glfwSetWindowSizeLimits(m_window, GLFW_DONT_CARE, GLFW_DONT_CARE, x, y);
+}
+
+void Window::setWindowMinlimits(uint32_t x, uint32_t y) {
+	// TODO: first check if window is in windowed mode
+	glfwSetWindowSizeLimits(m_window, x, y, GLFW_DONT_CARE, GLFW_DONT_CARE);
+}
+
+void Window::setWindowPosition(uint32_t x, uint32_t y) {
+	glfwSetWindowPos(m_window, x, y);
+}

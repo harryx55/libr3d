@@ -20,6 +20,10 @@ namespace rnd {
       void setFullscreen(bool set);
       void setWindowed(bool set);
       void setResizable(bool set);
+
+      void setWindowMaxLimits(uint32_t x, uint32_t y);
+      void setWindowMinLimits(uint32_t x, uint32_t y);
+      void setWindowPosition(uint32_t x, uint32_t y);
     private:
       Window *window;
 

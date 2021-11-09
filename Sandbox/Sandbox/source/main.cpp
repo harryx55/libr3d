@@ -17,6 +17,8 @@ int main()
 	app->setVSync(true);
 	app->setResizable(false);
 	
+	app->setWindowPosition(1, 1);
+	
 	while(app->Running()) {
 		app->Update();
 		app->Render();

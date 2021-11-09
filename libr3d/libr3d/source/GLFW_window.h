@@ -14,7 +14,11 @@ namespace rnd {
       void setWindowed(bool set);
       void setResizable(bool set);
       void closeWindow();
-  
+
+      void setWindowMaxlimits(uint32_t x, uint32_t y);
+      void setWindowMinlimits(uint32_t x, uint32_t y);
+      void setWindowPosition(uint32_t x, uint32_t y);
+      
       static GLFWwindow* GetWindow() { return m_window; }
       static GLFWwindow* m_window;
 
