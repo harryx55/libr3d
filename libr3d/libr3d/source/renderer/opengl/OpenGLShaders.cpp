@@ -1,5 +1,5 @@
+#include "pch.h"
 #include "OpenGLShaders.h"
-#include <stdio.h>
 
 void OpenGLShaders::LoadShaders(const char* vertexSrc, const char* fragmentSrc) {
 	m_shaderProgram  = glCreateProgram();

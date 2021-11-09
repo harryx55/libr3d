@@ -1,6 +1,5 @@
+#include "pch.h"
 #include "GLFW_window.h"
-#include <stdio.h>
-
 #include <glad.h>
 
 using namespace rnd;
@@ -47,6 +46,11 @@ void Window::setFullscreen(bool set) {
 	      m_window = glfwCreateWindow(m_width, m_height, m_title,
 					  glfwGetPrimaryMonitor(), NULL);
 	      */
+	}
+}
+
+void Window::setWindowed(bool set) {
+	if(set) {
 	}
 }
 

@@ -33,6 +33,9 @@
     <ClCompile Include="libr3d\source\GLFW_Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="libr3d\source\pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libr3d\source\Application.h">
@@ -60,6 +63,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="libr3d\source\renderer\opengl\OpenGLRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libr3d\source\pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libr3d\source\core\log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

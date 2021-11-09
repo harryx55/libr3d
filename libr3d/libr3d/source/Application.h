@@ -18,6 +18,7 @@ namespace rnd {
 
       void setVSync(bool set);
       void setFullscreen(bool set);
+      void setWindowed(bool set);
       void setResizable(bool set);
     private:
       Window *window;

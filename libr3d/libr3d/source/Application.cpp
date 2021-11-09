@@ -1,7 +1,6 @@
+#include "pch.h"
 #include "Application.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
+#include "core/log.h"
 
 using namespace rnd;
 Application::Application() {
@@ -93,6 +92,10 @@ void Application::setVSync(bool set) {
 
 void Application::setFullscreen(bool set) {
 	window->setFullscreen(set);
+}
+
+void Application::setWindowed(bool set) {
+	window->setWindowed(set);
 }
 
 void Application::setResizable(bool set) {

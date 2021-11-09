@@ -122,7 +122,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLFW_INCLUDE_NONE ;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)libr3d\libr3d\externel\glfw;$(SolutionDir)libr3d\libr3d\externel\glad</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)libr3d\libr3d\externel\glfw;$(SolutionDir)libr3d\libr3d\externel\glad;$(SolutionDir)libr3d\libr3d\source</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,10 +153,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="libr3d\externel\glad\glad.c" />
+    <ClCompile Include="libr3d\externel\glad\glad.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="libr3d\source\Application.cpp" />
     <ClCompile Include="libr3d\source\GLFW_Input.cpp" />
     <ClCompile Include="libr3d\source\GLFW_window.cpp" />
+    <ClCompile Include="libr3d\source\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="libr3d\source\renderer\opengl\OpenGLBuffers.cpp" />
     <ClCompile Include="libr3d\source\renderer\opengl\OpenGLShaders.cpp" />
   </ItemGroup>
@@ -162,9 +169,11 @@
     <ClInclude Include="libr3d\externel\glad\glad.h" />
     <ClInclude Include="libr3d\externel\glad\khrplatform.h" />
     <ClInclude Include="libr3d\source\Application.h" />
+    <ClInclude Include="libr3d\source\core\log.h" />
     <ClInclude Include="libr3d\source\GLFW_Input.h" />
     <ClInclude Include="libr3d\source\GLFW_window.h" />
     <ClInclude Include="libr3d\source\libr3d.h" />
+    <ClInclude Include="libr3d\source\pch.h" />
     <ClInclude Include="libr3d\source\renderer\opengl\OpenGLRenderer.h" />
     <ClInclude Include="libr3d\source\renderer\opengl\OpenGLBuffers.h" />
     <ClInclude Include="libr3d\source\renderer\opengl\OpenGLShaders.h" />
