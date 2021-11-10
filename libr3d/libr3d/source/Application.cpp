@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Application.h"
-#include "core/log.h"
 
 using namespace rnd;
 Application::Application() {
@@ -101,6 +100,22 @@ void Application::setWindowed(bool set) {
 
 void Application::setResizable(bool set) {
 	window->setResizable(set);
+}
+
+void Application::setAspectRatio(uint32_t x, uint32_t y) {
+	window->setAspectRatio(x, y);
+}
+
+int32_t Application::getWindowWidth() {
+	return window->getWindowWidth();
+}
+
+int32_t Application::getWindowHeight() {
+	return window->getWindowHeight();
+}
+
+void Application::setWindowSize(uint32_t x, uint32_t y) {
+	window->setWindowSize(x, y);
 }
 
 void Application::setWindowMaxLimits(uint32_t x, uint32_t y) {

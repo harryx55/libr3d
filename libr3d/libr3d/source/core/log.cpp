@@ -3,7 +3,7 @@
 
 // the first argument is the severity of the message
 #ifdef _WIN32 && _DEBUG
-void print(const char* level, const char* format, ...) {
+void rnd::print(const char* level, const char* format, ...) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	switch(level[0]) {
@@ -31,7 +31,7 @@ void print(const char* level, const char* format, ...) {
 }
 
 #elif
-void print(const char* level, const char* format, ...) {
+void rnd::print(const char* level, const char* format, ...) {
 	va_list args;
 	va_start(args, format);
 	vprintf(format, args);

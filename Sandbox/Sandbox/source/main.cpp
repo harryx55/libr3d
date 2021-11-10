@@ -15,9 +15,11 @@ int main()
 	SandboxApp *app = new SandboxApp();
 	app->Setup();
 	app->setVSync(true);
-	app->setResizable(false);
-	
-	app->setWindowPosition(1, 1);
+	app->setResizable(true);
+
+	// 	app->setFullscreen(true);
+	rnd::print("Error", "%d\n", app->getWindowWidth());
+	rnd::print("Error", "%d\n", app->getWindowHeight());
 	
 	while(app->Running()) {
 		app->Update();

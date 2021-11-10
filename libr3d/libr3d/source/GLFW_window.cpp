@@ -4,11 +4,13 @@
 
 using namespace rnd;
 GLFWwindow *Window::m_window;
+
 Window::Window(uint32_t width, uint32_t height, const char* title)
-  : m_width(width), m_height(height), m_title(title) {
+                    : m_width(width), m_height(height), m_title(title), m_monitor(NULL) {
+
 	if (!glfwInit()) {
-	      __debugbreak();
 	      printf("glfw not initialized\n");
+	      __debugbreak();
 	}
       
 	m_window = glfwCreateWindow(width, height, title, NULL, NULL);
@@ -18,6 +20,8 @@ Window::Window(uint32_t width, uint32_t height, const char* title)
 					       int height) {
 		glViewport(0, 0, width, height);
 	});
+
+	m_monitor = glfwGetPrimaryMonitor();
 }
 
 bool Window::Running() {
@@ -42,10 +46,8 @@ void Window::setVSync(bool set) {
 
 void Window::setFullscreen(bool set) {
 	if (set) {
-	      /*
-	      m_window = glfwCreateWindow(m_width, m_height, m_title,
-					  glfwGetPrimaryMonitor(), NULL);
-	      */
+	      const GLFWvidmode *mode = glfwGetVideoMode(m_monitor);
+	      glfwSetWindowMonitor(m_window, m_monitor, 0, 0, mode->width, mode->height, 0);
 	}
 }
 
@@ -55,6 +57,8 @@ void Window::setWindowed(bool set) {
 }
 
 void Window::setResizable(bool set) {
+	if (set) {
+	}
 }
 
 void Window::closeWindow() {
@@ -62,14 +66,40 @@ void Window::closeWindow() {
 	glfwTerminate();
 }
 
+void Window::setAspectRatio(uint32_t x, uint32_t y) {
+	// Todo: check if the ratio specified doesn't equal any of
+	// the standard aspect ratios
+	glfwSetWindowAspectRatio(m_window, x, y);
+}
+
+int32_t Window::getWindowWidth() {
+	int32_t width, height;
+	glfwGetWindowSize(m_window, &width, &height);
+	return width;
+}
+
+int32_t Window::getWindowHeight() {
+	int32_t width, height;
+	glfwGetWindowSize(m_window, &width, &height);
+	return height;
+}
+
+void Window::setWindowSize(uint32_t x, uint32_t y) {
+	glfwSetWindowSize(m_window, x, y);
+}
+
 void Window::setWindowMaxlimits(uint32_t x, uint32_t y) {
-	// TODO: first check if window is in windowed mode
-	glfwSetWindowSizeLimits(m_window, GLFW_DONT_CARE, GLFW_DONT_CARE, x, y);
+	// window limits only apply in windowed mode
+	if(glfwGetWindowMonitor(m_window) == nullptr) {
+	      glfwSetWindowSizeLimits(m_window, GLFW_DONT_CARE, GLFW_DONT_CARE, x, y);
+	}
 }
 
 void Window::setWindowMinlimits(uint32_t x, uint32_t y) {
-	// TODO: first check if window is in windowed mode
-	glfwSetWindowSizeLimits(m_window, x, y, GLFW_DONT_CARE, GLFW_DONT_CARE);
+	// window limits only apply in windowed mode
+	if(glfwGetWindowMonitor(m_window) == nullptr) {
+	      glfwSetWindowSizeLimits(m_window, x, y, GLFW_DONT_CARE, GLFW_DONT_CARE);
+	}
 }
 
 void Window::setWindowPosition(uint32_t x, uint32_t y) {

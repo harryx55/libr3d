@@ -3,26 +3,26 @@
 
 using namespace rnd;
 bool Input::IsKeyPressedImpl(int keyCode){
-	int state = glfwGetKey(Window::m_window, keyCode);
+	int state = glfwGetKey(Window::GetWindow(), keyCode);
 	return state == GLFW_PRESS || state == GLFW_RELEASE;
 }
 
 bool Input::IsKeyPressed(int keyCode) {
-	return glfwGetKey(Window::m_window, keyCode) == GLFW_PRESS;
+	return glfwGetKey(Window::GetWindow(), keyCode) == GLFW_PRESS;
 }
 
 bool Input::IsKeyReleased(int keyCode) {
-	return glfwGetKey(Window::m_window, keyCode) == GLFW_RELEASE;
+	return glfwGetKey(Window::GetWindow(), keyCode) == GLFW_RELEASE;
 }
 
 bool Input::IsMouseButtonPressedImpl(int button) {
-	int state = glfwGetMouseButton(Window::m_window, button);
+	int state = glfwGetMouseButton(Window::GetWindow(), button);
 	return state == GLFW_PRESS;
 }
 
 Input::MousePos Input::GetMousePosImpl() {
 	double xPos, yPos;
-	glfwGetCursorPos(Window::m_window, &xPos, &yPos);
+	glfwGetCursorPos(Window::GetWindow(), &xPos, &yPos);
 	return { (float)xPos, (float)yPos };
 }
 

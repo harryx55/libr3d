@@ -4,6 +4,7 @@
 #include "renderer/opengl/OpenGLBuffers.h"
 #include "renderer/opengl/OpenGLShaders.h"
 
+#include "core/log.h"
 namespace rnd {
     struct Application {
 
@@ -20,7 +21,11 @@ namespace rnd {
       void setFullscreen(bool set);
       void setWindowed(bool set);
       void setResizable(bool set);
-
+      void setAspectRatio(uint32_t x, uint32_t y);
+      
+      int32_t getWindowWidth();
+      int32_t getWindowHeight();
+      void setWindowSize(uint32_t x, uint32_t y);
       void setWindowMaxLimits(uint32_t x, uint32_t y);
       void setWindowMinLimits(uint32_t x, uint32_t y);
       void setWindowPosition(uint32_t x, uint32_t y);
