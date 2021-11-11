@@ -2,9 +2,11 @@
 #include "Application.h"
 
 using namespace rnd;
-Application::Application() : m_deltaTime(0.0), m_lastTime(0.0f) {
+Application::Application(uint32_t width, uint32_t height, const char* title,
+			 bool resizable) : m_deltaTime(0.0), m_lastTime(0.0f) {
+
 	print("Info", "%s\n", "Hello World!");
-	window = new Window(900, 600, "libr3d");
+	window = new Window(width, height, title, resizable);
 	if(!gladLoadGL()) {
 		printf("failed not initialize glad \n"); __debugbreak();
 	}
@@ -104,10 +106,6 @@ void Application::setFullscreen(bool set) {
 
 void Application::setWindowed(bool set) {
 	window->setWindowed(set);
-}
-
-void Application::setResizable(bool set) {
-	window->setResizable(set);
 }
 
 void Application::setAspectRatio(uint32_t x, uint32_t y) {

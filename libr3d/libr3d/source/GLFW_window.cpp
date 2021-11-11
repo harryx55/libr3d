@@ -5,17 +5,30 @@
 using namespace rnd;
 GLFWwindow *Window::m_window;
 
-Window::Window(uint32_t width, uint32_t height, const char* title)
+void GLWindowHints(uint8_t major, uint8_t minor) {
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, major);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minor);
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+}
+
+Window::Window(uint32_t width, uint32_t height, const char* title, bool resizable)
                     : m_width(width), m_height(height), m_title(title), m_monitor(NULL) {
 
 	if (!glfwInit()) {
 	      printf("glfw not initialized\n");
 	      __debugbreak();
 	}
-      
+
+	GLWindowHints(3, 1);
+	if(resizable) {
+	      glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+	}
+	else {
+	      glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+	}
+
 	m_window = glfwCreateWindow(width, height, title, NULL, NULL);
 	glfwMakeContextCurrent(m_window);
-	
 	glfwSetWindowSizeCallback(m_window, [](GLFWwindow* w, int width,
 					       int height) {
 		glViewport(0, 0, width, height);
@@ -37,7 +50,6 @@ Window::~Window() {
 	glfwTerminate();
 }
 
-
 void Window::setVSync(bool set) {
 	if(set) {
 	      glfwSwapInterval(1);
@@ -53,11 +65,6 @@ void Window::setFullscreen(bool set) {
 
 void Window::setWindowed(bool set) {
 	if(set) {
-	}
-}
-
-void Window::setResizable(bool set) {
-	if (set) {
 	}
 }
 

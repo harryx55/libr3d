@@ -8,7 +8,7 @@
 namespace rnd {
     struct Application {
 
-        Application();
+        Application(uint32_t width, uint32_t height, const char* title, bool resizable);
         void Update();
         ~Application();
 
@@ -25,7 +25,6 @@ namespace rnd {
         void setVSync(bool set);
         void setFullscreen(bool set);
         void setWindowed(bool set);
-        void setResizable(bool set);
         void setAspectRatio(uint32_t x, uint32_t y);
       
         int32_t getWindowWidth();

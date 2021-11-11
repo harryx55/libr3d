@@ -3,6 +3,7 @@
 
 struct SandboxApp : public rnd::Application
 {
+    using Application::Application;
     void Setup() {
     }
 
@@ -12,16 +13,14 @@ struct SandboxApp : public rnd::Application
 
 int main()
 {
-	SandboxApp *app = new SandboxApp();
+	SandboxApp *app = new SandboxApp(900, 600, "libr3d", false);
 	app->Setup();
 	app->setVSync(true);
-	app->setResizable(true);
 	
 	while(app->Running()) {
 		app->calcDeltaTime();
 		app->Update();
 		app->Render();
-		rnd::print("Error", "%f%s\n", app->getTime(), " ms");
 	}
 	delete app;
 }
