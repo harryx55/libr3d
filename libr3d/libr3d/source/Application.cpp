@@ -2,7 +2,7 @@
 #include "Application.h"
 
 using namespace rnd;
-Application::Application() {
+Application::Application() : m_deltaTime(0.0), m_lastTime(0.0f) {
 	print("Info", "%s\n", "Hello World!");
 	window = new Window(900, 600, "libr3d");
 	if(!gladLoadGL()) {
@@ -84,6 +84,14 @@ Application::~Application() {
 	free(indexBuffer);
 
 	delete window;
+}
+
+double Application::calcDeltaTime() {
+      float time  = (float)glfwGetTime();
+      m_deltaTime = time - m_lastTime;
+      m_lastTime  = time;
+
+      return m_lastTime;
 }
 
 void Application::setVSync(bool set) {

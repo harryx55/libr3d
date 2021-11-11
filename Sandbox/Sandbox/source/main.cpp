@@ -3,11 +3,11 @@
 
 struct SandboxApp : public rnd::Application
 {
-  void Setup() {
-  }
+    void Setup() {
+    }
 
-  void Render() {
-  }
+    void Render() {
+    }
 };
 
 int main()
@@ -16,14 +16,12 @@ int main()
 	app->Setup();
 	app->setVSync(true);
 	app->setResizable(true);
-
-	// 	app->setFullscreen(true);
-	rnd::print("Error", "%d\n", app->getWindowWidth());
-	rnd::print("Error", "%d\n", app->getWindowHeight());
 	
 	while(app->Running()) {
+		app->calcDeltaTime();
 		app->Update();
 		app->Render();
+		rnd::print("Error", "%f%s\n", app->getTime(), " ms");
 	}
 	delete app;
 }
