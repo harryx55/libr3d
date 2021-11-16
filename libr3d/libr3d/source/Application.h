@@ -4,44 +4,30 @@
 #include "renderer/opengl/OpenGLBuffers.h"
 #include "renderer/opengl/OpenGLShaders.h"
 
-#include "core/log.h"
+#include "core/base.h"
 namespace rnd {
     struct Application {
 
-        Application(uint32_t width, uint32_t height, const char* title, bool resizable);
+        Application() { }
         void Update();
         ~Application();
 
-        bool Running();
+        bool Create(uint32_t width = 1280, uint32_t height = 720, const char* windowCaption = "libr3d", bool resizable = true);
         void Setup();
         void Render();
         Window* GetWindow() { return window; }
+        static Application *Get() { s_instance =  new Application(); return s_instance; }
 
         double calcDeltaTime();
         double getTime() const { return m_lastTime; }
         double getDeltaTimeSeconds() const { return m_deltaTime; }
         double getDeltaTimeMilliSeconds() const { return m_deltaTime * 1000; }
-
-        void setVSync(bool set);
-        void setFullscreen(bool set);
-        void setWindowed(bool set);
-        void setAspectRatio(uint32_t x, uint32_t y);
-      
-        int32_t getWindowWidth();
-        int32_t getWindowHeight();
-        void setWindowSize(uint32_t x, uint32_t y);
-        void setWindowMaxLimits(uint32_t x, uint32_t y);
-        void setWindowMinLimits(uint32_t x, uint32_t y);
-        void setWindowPosition(uint32_t x,  uint32_t y);
     private:
+        static Application *s_instance;
         Window *window;
-        double m_deltaTime;      
-        float m_lastTime;
-      
-        OpenGLShaders *shader;
-        VertexArray   *vertexArray;
-        VertexBuffer  *vertexBuffer;
-        IndexBuffer   *indexBuffer;
+        double m_deltaTime = 0.0;
+        float m_lastTime   = 0.0f;
+
         Input *input;
     };
 }

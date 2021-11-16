@@ -157,7 +157,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="libr3d\source\Application.cpp" />
-    <ClCompile Include="libr3d\source\core\log.cpp" />
+    <ClCompile Include="libr3d\source\core\base.cpp" />
     <ClCompile Include="libr3d\source\GLFW_Input.cpp" />
     <ClCompile Include="libr3d\source\GLFW_window.cpp" />
     <ClCompile Include="libr3d\source\pch.cpp">
@@ -170,7 +170,7 @@
     <ClInclude Include="libr3d\externel\glad\glad.h" />
     <ClInclude Include="libr3d\externel\glad\khrplatform.h" />
     <ClInclude Include="libr3d\source\Application.h" />
-    <ClInclude Include="libr3d\source\core\log.h" />
+    <ClInclude Include="libr3d\source\core\base.h" />
     <ClInclude Include="libr3d\source\GLFW_Input.h" />
     <ClInclude Include="libr3d\source\GLFW_window.h" />
     <ClInclude Include="libr3d\source\libr3d.h" />

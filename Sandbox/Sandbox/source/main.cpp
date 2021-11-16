@@ -1,26 +1,18 @@
 #include <libr3d.h>
 #include <renderer/opengl/OpenGLRenderer.h>
 
-struct SandboxApp : public rnd::Application
-{
-    using Application::Application;
-    void Setup() {
-    }
-
-    void Render() {
-    }
-};
-
 int main()
 {
-	SandboxApp *app = new SandboxApp(900, 600, "libr3d", false);
-	app->Setup();
-	app->setVSync(true);
+	rnd::print("Debug", "%s\n", "Test print");
+	rnd::Application *app = rnd::Application::Get();
+	if(!app->Create()) {
+	      rnd::print("Error", "%s\n", "failed to create application instance ");
+	}
+	app->GetWindow()->setVSync(true);
 	
-	while(app->Running()) {
+	while(app->GetWindow()->Running()) {
 		app->calcDeltaTime();
 		app->Update();
-		app->Render();
 	}
 	delete app;
 }
