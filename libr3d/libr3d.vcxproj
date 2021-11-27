@@ -163,6 +163,7 @@
     <ClCompile Include="libr3d\source\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="libr3d\source\renderer\opengl\GLRenderSystem.cpp" />
     <ClCompile Include="libr3d\source\renderer\opengl\OpenGLBuffers.cpp" />
     <ClCompile Include="libr3d\source\renderer\opengl\OpenGLShaders.cpp" />
   </ItemGroup>
@@ -175,6 +176,7 @@
     <ClInclude Include="libr3d\source\GLFW_window.h" />
     <ClInclude Include="libr3d\source\libr3d.h" />
     <ClInclude Include="libr3d\source\pch.h" />
+    <ClInclude Include="libr3d\source\renderer\opengl\GLRenderSystem.h" />
     <ClInclude Include="libr3d\source\renderer\opengl\OpenGLRenderer.h" />
     <ClInclude Include="libr3d\source\renderer\opengl\OpenGLBuffers.h" />
     <ClInclude Include="libr3d\source\renderer\opengl\OpenGLShaders.h" />

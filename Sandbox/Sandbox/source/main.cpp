@@ -1,8 +1,7 @@
 #include <libr3d.h>
 #include <renderer/opengl/OpenGLRenderer.h>
 
-int main()
-{
+int main() {
 	rnd::print("Debug", "%s\n", "Test print");
 	rnd::Application *app = rnd::Application::Get();
 	if(!app->Create()) {

@@ -18,9 +18,9 @@ namespace rnd {
 
 
 #ifdef _DEBUG
-    #define ASSERT(x, error) {if((!x)) { rnd::print("Error", "%s", error); __debugbreak(); }}
+    #define Assert(x, error) {if((!x)) { rnd::print("Error", "%s", error); __debugbreak(); }}
 #elif
-    #define ASSERT(x, error)
+    #define Assert(x, error)
 #endif
 
 #endif

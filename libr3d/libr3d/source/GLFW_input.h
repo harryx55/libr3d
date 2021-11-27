@@ -3,19 +3,19 @@
 
 namespace rnd {
     struct Input {
-      bool IsKeyPressedImpl(int keyCode);
-      bool IsMouseButtonPressedImpl(int button);
+          bool IsKeyPressedImpl(int keyCode);
+          bool IsMouseButtonPressedImpl(int button);
 
-      bool IsKeyPressed(int keyCode);
-      bool IsKeyReleased(int keyCode);
+          bool IsKeyPressed(int keyCode);
+          bool IsKeyReleased(int keyCode);
   
-      float GetMousePosXImpl();
-      float GetMousePosYImpl();
+          float GetMousePosXImpl();
+          float GetMousePosYImpl();
 
-      const char* GetKeyName(int key);
+          const char* GetKeyName(int key);
       
-      struct MousePos { float x, y; };
-      MousePos GetMousePosImpl();
-
+          struct MousePos { float x, y; };
+          MousePos GetMousePosImpl();
     };
 }
+
