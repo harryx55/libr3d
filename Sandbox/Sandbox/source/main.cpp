@@ -2,10 +2,10 @@
 #include <renderer/opengl/OpenGLRenderer.h>
 
 int main() {
-	rnd::print("Debug", "%s\n", "Test print");
+	rnd::print(rnd::ERR::PRINT_DEBUG, "%s\n", "Test print");
 	rnd::Application *app = rnd::Application::Get();
 	if(!app->Create()) {
-	      rnd::print("Error", "%s\n", "failed to create application instance ");
+	      rnd::print(rnd::ERR::PRINT_ERROR, "%s\n", "failed to create application instance ");
 	}
 	app->GetWindow()->setVSync(true);
 	

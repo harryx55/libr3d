@@ -25,7 +25,7 @@ static const char* GL_errorsMessage(GLenum err) {
 
 bool GL_logCall(const GLchar* function, const GLchar* file, GLuint line) {
       if (auto error = glGetError()) {
-	    rnd::print("Error", "%s%s%s%s%s%d\n", "OpenGL Error: ", GL_errorsMessage(error), " in function ", function, file, line );
+	    rnd::print(rnd::ERR::PRINT_ERROR, "%s%s%s%s%s%d\n", "OpenGL Error: ", GL_errorsMessage(error), " in function ", function, file, line );
 	    return false;
       }
       return true;
@@ -57,10 +57,10 @@ void GL_init() {
       // initialize opengl functions
       Assert(gladLoadGL(), "Failed to initialize GLAD \n");
       
-      rnd::print("Info", "%s\n", glGetString(GL_VENDOR));
-      rnd::print("Info", "%s\n", glGetString(GL_VERSION));
-      rnd::print("Info", "%s\n", glGetString(GL_RENDERER));
-      rnd::print("Info", "%s\n", glGetString(GL_EXTENSIONS));
+      rnd::print(rnd::ERR::PRINT_INFO, "%s\n", glGetString(GL_VENDOR));
+      rnd::print(rnd::ERR::PRINT_INFO, "%s\n", glGetString(GL_VERSION));
+      rnd::print(rnd::ERR::PRINT_INFO, "%s\n", glGetString(GL_RENDERER));
+      rnd::print(rnd::ERR::PRINT_INFO, "%s\n", glGetString(GL_EXTENSIONS));
 
 
       

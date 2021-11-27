@@ -9,9 +9,9 @@ bool Application::Create(uint32_t width, uint32_t height, const char* windowCapt
 	// @TODO: if using opengl renderer then initialize glad
 
 	Assert(gladLoadGL(), "Failed to initialize glad \n");
-	rnd::print("Info", "%s\n", glGetString(GL_VENDOR));
-	rnd::print("Info", "%s\n", glGetString(GL_VERSION));
-	rnd::print("Info", "%s\n", glGetString(GL_RENDERER));
+	rnd::print(rnd::ERR::PRINT_INFO, "%s\n", glGetString(GL_VENDOR));
+	rnd::print(rnd::ERR::PRINT_INFO, "%s\n", glGetString(GL_VERSION));
+	rnd::print(rnd::ERR::PRINT_INFO, "%s\n", glGetString(GL_RENDERER));
 	
 	// @Refactor:
 	input = (Input*)malloc(sizeof(Input));
@@ -20,15 +20,16 @@ bool Application::Create(uint32_t width, uint32_t height, const char* windowCapt
 
 
 void Application::Update() {
+	//@Temp
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 
 	if(input->IsKeyPressed(GLFW_KEY_A)) {
-	      rnd::print("Info", "%s\n", "Mouse position Y : ", input->GetMousePosYImpl());
+	      rnd::print(rnd::ERR::PRINT_INFO, "%s\n", "Mouse position Y : ", input->GetMousePosYImpl());
 	}
 	
 	if(input->IsKeyPressed(GLFW_KEY_W)) {
-	      rnd::print("Info", "%s\n", input->GetKeyName(GLFW_KEY_W));
+	      rnd::print(rnd::ERR::PRINT_INFO, "%s\n", input->GetKeyName(GLFW_KEY_W));
 	}
 	window->Update();
 }
