@@ -12,6 +12,7 @@ bool Application::Create(uint32_t width, uint32_t height, const char* windowCapt
 	rnd::print(rnd::ERR::PRINT_INFO, "%s\n", glGetString(GL_VENDOR));
 	rnd::print(rnd::ERR::PRINT_INFO, "%s\n", glGetString(GL_VERSION));
 	rnd::print(rnd::ERR::PRINT_INFO, "%s\n", glGetString(GL_RENDERER));
+	rnd::print(rnd::ERR::PRINT_INFO, "%s\n", glGetString(GL_EXTENSIONS));
 	
 	// @Refactor:
 	input = (Input*)malloc(sizeof(Input));

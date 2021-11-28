@@ -11,6 +11,7 @@ int main() {
 	
 	while(app->GetWindow()->Running()) {
 		app->calcDeltaTime();
+		rnd::print(rnd::ERR::PRINT_DEBUG, "%f\n", app->GetFPS());
 		app->Update();
 	}
 	delete app;

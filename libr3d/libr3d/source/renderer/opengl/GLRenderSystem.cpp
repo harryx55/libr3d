@@ -31,15 +31,22 @@ bool GL_logCall(const GLchar* function, const GLchar* file, GLuint line) {
       return true;
 }
 
+//
+// runtime error checking for opengl
 #ifdef _DEBUG
       #define GL_ERR(x) while(glGetError() !=  GL_NO_ERROR); x; if(!(GL_logCall(#x, __FILE__, __LINE__))) { __debugbreak(); }
 #else
       #define GL_ERR(x) x
 #endif
 
-void GL_Clear(float r = 0.0f, float g = 0.0f, float b = 0.0f, bool DepthTest = false, bool stencilTest = false) {
-      GLenum mask = GL_COLOR_BUFFER_BIT;
-	      
+//@Refactor: change float arguments to vector3 when math is added
+void GL_Clear(float r = 0.0f, float g = 0.0f, float b = 0.0f, bool backBuffer = true, bool DepthTest = false, bool stencilTest = false) {
+      GLenum mask = 0;
+
+      if(backBuffer) {
+	    mask |= GL_COLOR_BUFFER_BIT;
+      }
+
       if(DepthTest) {
 	    mask |= GL_DEPTH_BUFFER_BIT;
       }
@@ -61,7 +68,5 @@ void GL_init() {
       rnd::print(rnd::ERR::PRINT_INFO, "%s\n", glGetString(GL_VERSION));
       rnd::print(rnd::ERR::PRINT_INFO, "%s\n", glGetString(GL_RENDERER));
       rnd::print(rnd::ERR::PRINT_INFO, "%s\n", glGetString(GL_EXTENSIONS));
-
-
       
 }
